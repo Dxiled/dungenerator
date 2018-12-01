@@ -10,6 +10,13 @@ centerButton = Rect(300,300,400,60)
 backButton = Rect(50,500,400,50)
 nextButton = Rect(550,500,400,50)
 
+strSquare = Rect(200,50,100,100)
+dexSquare = Rect(300,50,100,100)
+conSquare = Rect(400,50,100,100)
+intSquare = Rect(500,50,100,100)
+wisSquare = Rect(600,50,100,100)
+chaSquare = Rect(700,50,100,100)
+
 titleFont = font.SysFont("copperplategothic",100)
 Font = font.SysFont("calibri",40)
 
@@ -65,6 +72,65 @@ def displayCharacter(window,click,characterIntro):
     renderTextCenteredAt("Let's roll the stats!", Font, (0,0,100), 750, 505, window, 400)
     return 2
 
+def assignStats(window,click,drag,statList,boxList):
+    strFull = -1
+    dexFull = -1
+    conFull = -1
+    intFull = -1
+    wisFull = -1
+    chaFull = -1
+    holding = -1
+    mousePos = mouse.get_pos()
+    if click:
+        for i in range(6):
+            if boxList[i].collidepoint(mousePos) and i not in [strFull,dexFull,conFull,intFull,wisFull,chaFull]:
+                holding = i
+    if not drag:
+        if holding != -1:
+            if strSquare.collidepoint(mousePos):
+                if strFull == -1:
+                    strFull = holding
+            if dexSquare.collidepoint(mousePos):
+                if dexFull == -1:
+                    dexFull = holding
+            if conSquare.collidepoint(mousePos):
+                if dexFull == -1:
+                    dexFull = holding
+            if intSquare.collidepoint(mousePos):
+                if intFull == -1:
+                    intFull = holding
+            if wisSquare.collidepoint(mousePos):
+                if wisFull == -1:
+                    wisFull = holding
+            if chaSquare.collidepoint(mousePos):
+                if chaFull == -1:
+                    chaFull = holding
+            holding = -1
+    else:
+        for i in range(6):
+            if i not in [strFull,dexFull,conFull,intFull,wisFull,chaFull]:
+                if boxList[i].collidepoint(mousePos):
+                    if holding == -1:
+                        holding = i
+                    if holding == i:
+                        boxList[i] = Rect(mousePos[0]-50,mousePos[1]-50,100,100)
+    draw.rect(window,(100,100,100),strSquare,2)
+    renderTextCenteredAt("STR", Font, (100,100,100), 250, 150, window, 100)
+    draw.rect(window,(100,100,100),dexSquare,2)
+    renderTextCenteredAt("DEX", Font, (100,100,100), 350, 150, window, 100)
+    draw.rect(window,(100,100,100),conSquare,2)
+    renderTextCenteredAt("CON", Font, (100,100,100), 450, 150, window, 100)
+    draw.rect(window,(100,100,100),intSquare,2)
+    renderTextCenteredAt("INT", Font, (100,100,100), 550, 150, window, 100)
+    draw.rect(window,(100,100,100),wisSquare,2)
+    renderTextCenteredAt("WIS", Font, (100,100,100), 650, 150, window, 100)
+    draw.rect(window,(100,100,100),chaSquare,2)
+    renderTextCenteredAt("CHA", Font, (100,100,100), 750, 150, window, 100)
+    for i in range(6):
+        draw.rect(window,(200,200,200),boxList[i])
+        renderTextCenteredAt(str(statList[i]),Font,(0,0,0),boxList[i][0]+50,boxList[i][1]+50, window, 100)
+    return 4
+
 def main():
     screen = display.set_mode((1000,600))
     state = 0
@@ -95,9 +161,12 @@ def main():
         elif state == 3:
             stats = rollStats.rollStats()
             stats = recommendStats.recommend(cclass,stats)
+            rectList = []
+            for i in range(6):
+                rectList.append(Rect(100*i+200,250,100,100))
             state = 4
         elif state == 4:
-            pass
+            state = assignStats(screen,clicking,dragging,stats,rectList)
         else:
             running = False
         if clicking:
