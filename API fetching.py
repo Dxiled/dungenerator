@@ -42,3 +42,9 @@ def getClass(className):
 
 	return classData
 
+def getLevel(currentLevel, className):
+	className = className.lower()
+
+	classData = readAPI('classes/' + className + '/level/' + str(currentLevel))
+
+	return classData
