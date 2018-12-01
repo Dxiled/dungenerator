@@ -1,4 +1,5 @@
 def recommend(pclass,statList):
+    statList.sort(reverse=True)
     classes = ["Cleric","Fighter","Rogue","Wizard","Barbarian","Bard","Druid","Monk","Paladin","Ranger","Sorcerer","Warlock"]
     #Stat order: Strength, Dexterity, Constitution, Intellegence, Wisdom, Charisma
     #                     Cleric         Fighter        Rogue          Wizard         Barbarian      Bard           Druid          Monk           Paladin        Ranger         Sorcerer       Warlock
