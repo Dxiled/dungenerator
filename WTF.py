@@ -1,6 +1,4 @@
 adjectives = [
-    "bigoted",
-    "bitchy",
     "blunt",
     "boisterous",
     "bossy",
@@ -38,7 +36,6 @@ adjectives = [
     "hot-headed",
     "lazy",
     "loud",
-    "Machiavellian",
     "moody",
     "philosophical",
     "pompous",
@@ -154,7 +151,7 @@ adjectives = [
     "diplomatic",
     "faithful",
     "hard-working",
-    "modest",
+    "modest"
 ]
 
 race = [
@@ -166,7 +163,7 @@ race = [
     "Half-orc",
     "Halfling",
     "Human",
-    "Tiefling",
+    "Tiefling"
 ]
 
 dclass = [
@@ -181,7 +178,7 @@ dclass = [
     "Paladin",
     "Ranger",
     "Sorcerer",
-    "Warlock",
+    "Warlock"
 ]
 
 location = [
@@ -419,7 +416,7 @@ location = [
     "the quality control for potion brewing association",
     "a town where orcs are bought and sold as slaves",
     "a secret order of monks",
-    "the imperial army",
+    "the imperial army"
 ]
 
 backstory = [
@@ -702,5 +699,5 @@ backstory = [
     "parties hard, way too hard.",
     "isn't technically alive anymore",
     "is convinced they're always being left out",
-    "doesn't speak a word of common",
+    "doesn't speak a word of common"
 ]
