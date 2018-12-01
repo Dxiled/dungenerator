@@ -24,8 +24,21 @@ def getRace(raceName):
 				 'gnome':6,
 				 'half-elf':7,
 				 'half-orc':8,
-				 'teifling':9}
+				 'teifling':9
+	}
 
 	raceData = readAPI('races/' + str(raceIndex[raceName]))
 
 	return raceData
+
+'''
+Get class information from API
+for some reason you can use the class name instead of its index and it still works
+'''
+def getClass(className):
+	className = className.lower()
+
+	classData = readAPI('classes/' + className)
+
+	return classData
+
