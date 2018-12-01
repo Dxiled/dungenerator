@@ -22,6 +22,9 @@ def bstory():
     return backstory
 
 def intro(a,r,c,l,b):
-    sentence = "You're a %s %s %s from %s who %s."%(a,r,c,l,b)
+    if a[0] in ['a','e','i','o','u']:
+        sentence = "You're an %s %s %s from %s who %s."%(a,r,c,l,b)
+    else:
+        sentence = "You're a %s %s %s from %s who %s."%(a,r,c,l,b)
     return sentence
 
