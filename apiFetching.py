@@ -24,7 +24,7 @@ def getRace(raceName):
 				 'gnome':6,
 				 'half-elf':7,
 				 'half-orc':8,
-				 'teifling':9
+				 'tiefling':9
 	}
 
 	raceData = readAPI('races/' + str(raceIndex[raceName]))
